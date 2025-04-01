@@ -61,52 +61,67 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: "url('https://www.nitk.ac.in/design-system/Gallery/Kite-Festival.jpg')",
-          filter: "brightness(0.7)"
-        }}
-      ></div>
-      
-      {/* Glass Container */}
-      <div className="bg-opacity-20 backdrop-blur-md rounded-xl p-8 md:p-12 max-w-3xl w-full mx-4 z-10 text-center border border-white border-opacity-30 shadow-lg">
-        <h1 className="text-2xl md:text-3xl font-bold text-white mb-6 leading-relaxed">
-          DEPARTMENT OF INFORMATION TECHNOLOGY
-        </h1>
-        <h2 className="text-xl md:text-2xl font-semibold text-white mb-6">
-          NATIONAL INSTITUTE OF TECHNOLOGY KARNATAKA, SURATHKAL
-        </h2>
-        <div className="w-24 h-1 bg-white bg-opacity-50 mx-auto mb-6"></div>
-        <h3 className="text-lg md:text-xl font-bold text-white mb-4">
-          Deep Learning Course Project: "<em className="text-red-500">Wildfire Detection using drone images</em>"
-        </h3>
-        <p className="text-md md:text-lg text-white mb-2">
-          Carried out by: Vijay Kumar B (221AI043) & Tarlana Sahil (221AI040)
-        </p>
-        <p className="text-sm md:text-md text-white text-opacity-70 mb-10">
-          Session January - April 2025
-        </p>
-        
-        {/* Buttons */}
-        <div className="flex justify-center space-x-4 mt-8">
-          <button 
-            className="bg-opacity-10 hover:bg-opacity-20 text-white px-8 py-2 rounded-md border border-white border-opacity-30 hover:border-opacity-50 transition-all"
-            onClick={() => setInputOpen(true)}
-            disabled={processing}
-          >
-            {processing ? "Processing..." : "Input"}
-          </button>
-          <button 
-            className="bg-blue-600 bg-opacity-90 hover:bg-opacity-100 text-white px-8 py-2 rounded-md transition-all"
-            onClick={() => setOutputOpen(true)}
-            // disabled={!results}
-          >
-            Output
-          </button>
-        </div>
+    <div className="min-h-screen w-full bg-gradient-to-br from-blue-50 to-indigo-100 font-sans">
+      {/* Main Content */}
+      <div className="w-full min-h-screen flex flex-col p-8">
+        {/* Header Section */}
+        <header className="w-full text-center py-8 border-b border-gray-200">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 tracking-tight mb-4">
+            DEPARTMENT OF INFORMATION TECHNOLOGY
+          </h1>
+          <h2 className="text-xl md:text-2xl font-semibold text-gray-700 mb-4">
+            NATIONAL INSTITUTE OF TECHNOLOGY KARNATAKA, SURATHKAL
+          </h2>
+          <div className="w-32 h-1 bg-indigo-500 mx-auto my-6"></div>
+        </header>
+
+        {/* Project Info Section */}
+        <main className="flex-1 flex flex-col items-center justify-center px-4 py-12">
+          <div className="max-w-4xl w-full text-center">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
+              Deep Learning Course Project: <span className="text-red-600 font-semibold italic">Wildfire Detection using drone images</span>
+            </h3>
+            
+            <p className="text-lg md:text-xl text-gray-700 mb-3">
+              Carried out by: Vijay Kumar B (221AI043) & Tarlana Sahil (221AI040)
+            </p>
+            
+            <p className="text-md md:text-lg text-gray-500 mb-16">
+              Session January - April 2025
+            </p>
+            
+            {/* Action Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 max-w-3xl mx-auto">
+              <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300">
+                <h4 className="text-xl font-semibold text-gray-800 mb-4">Input Images</h4>
+                <p className="text-gray-600 mb-6">Upload RGB and IR drone images for wildfire detection analysis</p>
+                <button 
+                  className="w-full bg-white hover:bg-gray-50 text-indigo-600 font-medium px-6 py-3 rounded-lg border-2 border-indigo-600 hover:border-indigo-700 transition-colors duration-200"
+                  onClick={() => setInputOpen(true)}
+                  disabled={processing}
+                >
+                  {processing ? "Processing..." : "Upload Images"}
+                </button>
+              </div>
+              
+              <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300">
+                <h4 className="text-xl font-semibold text-gray-800 mb-4">View Results</h4>
+                <p className="text-gray-600 mb-6">Examine the wildfire detection results from model analysis</p>
+                <button 
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-6 py-3 rounded-lg transition-colors duration-200"
+                  onClick={() => setOutputOpen(true)}
+                >
+                  View Output
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        {/* Footer */}
+        <footer className="w-full text-center py-6 border-t border-gray-200">
+          <p className="text-gray-600">© 2025 Department of Information Technology, NITK Surathkal</p>
+        </footer>
       </div>
       
       {/* Overlays */}
