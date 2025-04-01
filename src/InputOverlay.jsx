@@ -74,7 +74,7 @@ const InputOverlay = ({ open, onOpenChange, onProcessImages, processing, error }
                       className="w-full h-full object-contain"
                     />
                     <button
-                      className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center"
+                      className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center cursor-pointer"
                       onClick={() => {
                         setRgbImage(null);
                         setRgbPreview(null);
