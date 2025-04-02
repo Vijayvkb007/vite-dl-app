@@ -3,11 +3,17 @@ import InputOverlay from './InputOverlay';
 import OutputOverlay from './OutputOverlay';
 
 const LandingPage = () => {
+  // to open the input overlay
   const [inputOpen, setInputOpen] = useState(false);
+  // to open the output overlay
   const [outputOpen, setOutputOpen] = useState(false);
+  // to show the processing state
   const [processing, setProcessing] = useState(false);
+  // to store the results
   const [results, setResults] = useState(null);
+  // to store the error
   const [error, setError] = useState(null);
+  // to store the input images and output it in the output overlay
   const [inputImages, setInputImages] = useState({
     rgb: null,
     ir: null,
@@ -15,9 +21,12 @@ const LandingPage = () => {
     irPreview: null
   });
 
+  // to process the images and send it to the backend
   const handleProcessImages = async (rgbImage, irImage) => {
     try {
+      // to show the processing state
       setProcessing(true);
+      // to clear the error
       setError(null);
 
       // Create preview URLs for display
@@ -38,15 +47,18 @@ const LandingPage = () => {
 
       const apiUrl = import.meta.env.VITE_API_URL;
 
+      // to send the images to the backend
       const response = await fetch("https://dl-course-project-django-backend.onrender.com/api/upload/", {
         method: "POST",
         body: formData,
       });
 
+      // to check if the images are uploaded successfully
       if (!response.ok) {
         throw new Error('Failed to upload images');
       }
 
+      // to get the results from the backend
       const data = await response.json();
       setResults(data);
       setOutputOpen(false);
@@ -76,7 +88,7 @@ const LandingPage = () => {
         </header>
 
         {/* Project Info Section */}
-        <main className="flex-1 flex flex-col items-center justify-center px-4 py-12">
+        <main className="flex-1 flex flex-col items-center justify-center px-4 py-12 bg-white">
           <div className="max-w-4xl w-full text-center">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
               Deep Learning Course Project: <span className="text-red-600 font-semibold italic">Wildfire Detection using drone images</span>
