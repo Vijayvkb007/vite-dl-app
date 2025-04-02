@@ -13,15 +13,11 @@ const OutputOverlay = ({
 
   try {
     message = response.message;
-    output = response.output;
+    output = response.data["prediction"];
     inputImages = images;
   } 
   catch (err) {
     console.log(err);
-    console.log(response);
-  }
-  finally {
-    console.log(response);
   }
 
   return (

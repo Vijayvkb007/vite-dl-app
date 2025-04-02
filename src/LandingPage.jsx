@@ -48,7 +48,7 @@ const LandingPage = () => {
       const apiUrl = import.meta.env.VITE_API_URL;
 
       // to send the images to the backend
-      const response = await fetch("https://dl-course-project-django-backend.onrender.com/api/upload/", {
+      const response = await fetch(apiUrl, {
         method: "POST",
         body: formData,
       });
